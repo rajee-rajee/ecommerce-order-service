@@ -1,10 +1,6 @@
 package com.rajee.ecommerce_order_service.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,5 +17,5 @@ public class Product {
     private Long id;
     private String name;
     private double price;
-    
+
 }
