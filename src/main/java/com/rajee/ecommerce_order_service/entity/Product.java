@@ -1,9 +1,11 @@
 package com.rajee.ecommerce_order_service.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "products")
@@ -16,6 +18,8 @@ public class Product {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Positive(message = "Price must be greater than zero")
     private double price;
 
 }

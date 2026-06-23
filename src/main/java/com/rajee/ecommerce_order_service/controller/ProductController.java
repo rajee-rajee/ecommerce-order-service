@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.rajee.ecommerce_order_service.entity.Product;
 import com.rajee.ecommerce_order_service.service.ProductService;
 import java.util.List;
+import jakarta.validation.*;
 
 @RestController
 @RequestMapping("/products")
@@ -16,7 +17,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@RequestBody @Valid Product product) {
         return productService.createProduct(product);
     }
 

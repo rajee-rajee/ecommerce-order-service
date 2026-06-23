@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 
 @Entity
@@ -18,8 +19,11 @@ public class User {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   @NotBlank(message = "Name is mandatory")
    private String name;
 
+   @Email(message = "Invalid email format")
+   @NotBlank(message = "Email is mandatory")
    private String email;
 
    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
