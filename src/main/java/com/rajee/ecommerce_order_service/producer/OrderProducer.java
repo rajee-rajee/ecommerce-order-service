@@ -1,5 +1,7 @@
 package com.rajee.ecommerce_order_service.producer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,9 @@ import com.rajee.ecommerce_order_service.dto.OrderCreatedEvent;
 
 @Service
 public class OrderProducer {
+
+    private static final Logger log =
+        LoggerFactory.getLogger(OrderProducer.class);
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -28,7 +33,7 @@ public class OrderProducer {
                 routingKey,
                 event);
 
-        System.out.println("Order event sent to RabbitMQ");
+        log.info("Published OrderCreatedEvent for order {}", event.getOrderId());
     }
 
 }

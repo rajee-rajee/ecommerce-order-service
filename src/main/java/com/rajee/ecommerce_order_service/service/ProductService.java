@@ -1,13 +1,19 @@
 package com.rajee.ecommerce_order_service.service;
 
-import com.rajee.ecommerce_order_service.entity.Product;
-import com.rajee.ecommerce_order_service.repository.ProductRepository;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.rajee.ecommerce_order_service.entity.Product;
+import com.rajee.ecommerce_order_service.repository.ProductRepository;
 
 @Service
 public class ProductService {
+
+    private static final Logger log =
+        LoggerFactory.getLogger(ProductService.class);
     
     private final ProductRepository productRepository;
 
@@ -16,15 +22,35 @@ public class ProductService {
     }
 
     public Product createProduct(Product product) {
-        return productRepository.save(product);
+
+        log.info("Creating product: {}", product.getName());
+
+        Product savedProduct = productRepository.save(product);
+
+        log.info("Product created with id: {}", savedProduct.getId());
+
+        return savedProduct;
     }
 
     public List<Product> getAllProduct() {
-        return  productRepository.findAll();
+
+        log.info("Fetching all products");
+
+        return productRepository.findAll();
     }
 
-    public Product getProductID(Long productId) {
-        return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found with id: " + productId));
+   public Product getProductID(Long productId) {
+
+        log.info("Fetching product with id: {}", productId);
+
+        return productRepository.findById(productId)
+                .orElseThrow(() -> {
+
+                    log.error("Product not found with id: {}", productId);
+
+                    return new RuntimeException(
+                            "Product not found with id: " + productId);
+                });
     }
 
     public Product updateProduct(Long productId, Product updatedProduct) {
