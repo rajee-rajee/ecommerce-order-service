@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rajee.ecommerce_order_service.dto.AuthResponse;
+import com.rajee.ecommerce_order_service.dto.LoginRequest;
+import com.rajee.ecommerce_order_service.dto.RegisterRequest;
 import com.rajee.ecommerce_order_service.service.AuthService;
 
 import jakarta.validation.Valid;
-
-import com.rajee.ecommerce_order_service.dto.RegisterRequest;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -26,5 +27,11 @@ public class AuthController {
         authService.registerUser(registerRequest);
         return "User registered successfully";
     }
+
+    @PostMapping("/login")
+    public AuthResponse loginUser(@Valid @RequestBody LoginRequest loginRequest) {
+        return authService.loginUser(loginRequest);
+    }
+    
 }
 
