@@ -2,9 +2,11 @@ package com.rajee.ecommerce_order_service.service;
 
 import com.rajee.ecommerce_order_service.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 import com.rajee.ecommerce_order_service.entity.User;
 import com.rajee.ecommerce_order_service.dto.RegisterRequest;
 
+@Service
 public class AuthService {
 
     private final UserRepository userRepository;
