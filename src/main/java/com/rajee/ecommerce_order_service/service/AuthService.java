@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.rajee.ecommerce_order_service.dto.AuthResponse;
 import com.rajee.ecommerce_order_service.dto.LoginRequest;
 import com.rajee.ecommerce_order_service.dto.RegisterRequest;
+import com.rajee.ecommerce_order_service.entity.Role;
 import com.rajee.ecommerce_order_service.entity.User;
 import com.rajee.ecommerce_order_service.repository.UserRepository;
 
@@ -31,7 +32,7 @@ public class AuthService {
         user.setName(register.getName());
         user.setEmail(register.getEmail());
         user.setPassword(passwordEncoder.encode(register.getPassword()));
-        
+        user.setRole(Role.CUSTOMER);        
         userRepository.save(user);
 
     }

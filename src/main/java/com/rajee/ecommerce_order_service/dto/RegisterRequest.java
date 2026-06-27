@@ -1,11 +1,10 @@
 package com.rajee.ecommerce_order_service.dto;
 
-import com.rajee.ecommerce_order_service.entity.Role;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.validation.constraints.*;
 
 
 @Getter
@@ -22,7 +21,4 @@ public class RegisterRequest {
     
         @NotBlank(message = "Password is required")
         private String password;
-    
-        @Enumerated(EnumType.STRING)
-        private Role role;
 }
