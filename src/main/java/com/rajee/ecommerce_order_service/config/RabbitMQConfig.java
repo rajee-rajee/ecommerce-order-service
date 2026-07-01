@@ -41,10 +41,8 @@ public class RabbitMQConfig {
     @Bean
     public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
         RabbitAdmin admin = new RabbitAdmin(connectionFactory);
-        admin.setAutoStartup(true);
-        admin.declareQueue(orderQueue());
-        admin.declareExchange(orderExchange());
-        admin.declareBinding(binding(orderQueue(), orderExchange()));
+        admin.setAutoStartup(false);
+        admin.setIgnoreDeclarationExceptions(true);
         return admin;
     }
 

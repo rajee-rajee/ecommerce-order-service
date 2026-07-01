@@ -4,11 +4,13 @@ package com.rajee.ecommerce_order_service;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 // import org.springframework.context.annotation.Bean;
+import org.springframework.cache.annotation.EnableCaching;
 
 // import com.rajee.ecommerce_order_service.entity.Product;
 // import com.rajee.ecommerce_order_service.repository.ProductRepository;
 
 @SpringBootApplication
+@EnableCaching
 public class EcommerceOrderServiceApplication {
 
 	public static void main(String[] args) {

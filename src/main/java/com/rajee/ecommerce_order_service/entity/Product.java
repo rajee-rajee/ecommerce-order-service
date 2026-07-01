@@ -1,5 +1,9 @@
 package com.rajee.ecommerce_order_service.entity;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +19,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String name;
 

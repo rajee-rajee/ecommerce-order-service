@@ -36,5 +36,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build Project
-        run: ./mvnw clean package -DskipTests
+      - name: Build and Test
+        run: ./mvnw clean package
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
